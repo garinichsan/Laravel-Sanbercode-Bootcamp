@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Latihan DOM</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container-flow">
+        <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand">Mini Ecommerce</a>
+            <form class="form-inline" id="formItem">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search"  id="keyword" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchItem">Search</button>
+            </form>
+            <button class="btn btn-primary" id="cart"><i class="fas fa-shopping-cart"></i> (<span id="sumCart"></span>) </button>
+        </nav>
+
+        <div class="container"> 
+            <div class="row" id="produk">   
+               
+            </div>
+        </div>
+        
+    </div>
+    <script>
+        /* ----------------------------------   Data    ---------------------------------- */
+        var items = [
+            ['001', 'Keyboard Logitek', 60000, 'Keyboard yang mantap untuk kantoran', 'logitek.jpg'], 
+            ['002', 'Keyboard MSI', 300000, 'Keyboard gaming MSI mekanik', 'msi.jpg'],
+            ['003', 'Mouse Genius', 50000, 'Mouse Genius biar lebih pinter', 'genius.jpeg'],
+            ['004', 'Mouse Jerry', 30000, 'Mouse yang disukai kucing', 'jerry.jpg']
+        ]
+
+        /* ------------------------------   Tampilan Awal    ------------------------------ */
+        var sumCart = 0;
+        document.getElementById("sumCart").innerHTML = sumCart 
+
+        var produk = '' 
+        for ( let i = 0 ; i < items.length ; i++) {
+            produk += cardProduct(items[i])
+        }
+        document.getElementById("produk").innerHTML = produk
+
+        /* ----------------------------------   Search    ---------------------------------- */
+        var search = document.getElementById("searchItem")
+        search.addEventListener("click", function(e) {
+            e.preventDefault()
+            var keyword = document.getElementById("keyword").value.toLowerCase()
+                var newProduk = '';
+                for ( let i = 0 ; i < items.length ; i++) {
+                    if ( items[i][1].toLowerCase().includes(keyword)) {
+                        newProduk += cardProduct(items[i])
+                    }
+                } 
+                document.getElementById("produk").innerHTML = newProduk;
+        });
+
+        // tambahan untuk key up
+        var tempKeyword = document.getElementById("keyword")
+        tempKeyword.addEventListener("keyup", function(){
+            var keyword = document.getElementById("keyword").value.toLowerCase()
+            var newProduk = '';
+            for ( let i = 0 ; i < items.length ; i++) {
+                if ( items[i][1].toLowerCase().includes(keyword)) {
+                    newProduk += cardProduct(items[i])
+                }
+            } 
+            document.getElementById("produk").innerHTML = newProduk;
+        });
+
+        /* ---------------------------------   Function    --------------------------------- */
+        function addtoCart() { 
+            sumCart++ 
+            document.getElementById("sumCart").innerHTML = sumCart 
+        }
+
+        function cardProduct(prod){
+            return `<div class="col-4 mt-4" >
+                        <div class="card style="width: 18rem;">
+                            <img src="img/${prod[4]}" class="card-img-top" alt="..." style="height:160px; object-fit: contain;">
+                            <div class="card-body">
+                                <h5 class="card-title" id="itemName">${prod[1]}</h5>
+                                <p class="card-text" id="itemDesc">${prod[3]}</p>
+                                <p class="card-text">Rp ${prod[2]}</p>
+                                <a href="#" class="btn btn-primary" id="addCart" onClick="addtoCart()" >Tambahkan ke keranjang</a>
+                            </div>
+                        </div>
+                    </div>`
+        }
+
+    </script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
