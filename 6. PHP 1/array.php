@@ -18,7 +18,16 @@
             Adults: "Hopper", "Nancy",  "Joyce", "Jonathan", "Murray"
         */
         $kids = ["Mike", "Dustin", "Will", "Lucas", "Max", "Eleven"]; // Lengkapi di sini
-        $adults = ["Hopper", "Nancy",  "Joyce", "Jonathan", "Murray"]; 
+        $adults = ["Hopper", "Nancy",  "Joyce", "Jonathan", "Murray"];
+        
+        echo "Kids <pre>";
+        print_r($kids);
+        echo "</pre>";
+
+        echo "Adults <pre>";
+        print_r($adults);
+        echo "</pre>";
+
         echo "<h3> Soal 2</h3>";
         /* 
             SOAL NO 2
@@ -26,7 +35,7 @@
         */
         echo "Cast Stranger Things: ";
         echo "<br>";
-        echo "Total Kids: " . length($kids); // Berapa panjang array kids
+        echo "Total Kids: " . count($kids); // Berapa panjang array kids
         echo "<br>";
         echo "<ol>"; 
         echo "<li> $kids[0] </li>";
@@ -38,7 +47,7 @@
         echo "<li> $kids[5] </li>";
         echo "</ol>";
         
-        echo "Total Adults: " . length($adults); // Berapa panjang array adults
+        echo "Total Adults: " . count($adults); // Berapa panjang array adults
         echo "<br>";
         echo "<ol>";
         echo "<li> $adults[0] </li>";
@@ -81,7 +90,12 @@
             array('Name' => "Jim Hopper", 'Age' => 43, 'Aliases' => 'Chief Hopper', 'Statuses' => 'Deceased' ),
             array('Name' => "Eleven", 'Age' => 12, 'Aliases' => 'El', 'Statuses' => 'Alive' ),
         );
-        
+
+        echo "<h3> Soal 2</h3>";
+
+        echo "<pre>";
+        print_r($data);
+        echo "</pre>";
     ?>
 </body>
 </html>

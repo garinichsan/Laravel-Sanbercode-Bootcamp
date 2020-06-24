@@ -22,7 +22,7 @@
         */
 
         $first_sentence = "Hello PHP!" ; // Panjang string 10, jumlah kata: 2
-        echo "$first_sentence <br> Panjang string: " . strlen($first_sentence) . "<br> Jumlah kata: " . str_word_count($first_sentence);
+        echo "$first_sentence <br> Panjang string: " . strlen($first_sentence) . "<br> Jumlah kata: " . str_word_count($first_sentence) . "<br> <br>";
 
         $second_sentence = "I'm ready for the challenges"; // Panjang string: 28,  jumlah kata: 5
         echo "$second_sentence <br> Panjang string: " . strlen($second_sentence) . "<br> Jumlah kata: " . str_word_count($second_sentence);
@@ -49,9 +49,11 @@
             Mengubah karakter atau kata yang ada di dalam sebuah string.
         */
         $string3 = "PHP is old but sexy!";
-        echo "String: \"$string3\" "; 
+        echo "String: \"$string3\""; 
         // OUTPUT : "PHP is old but awesome"
-        echo str_replace("sexy","awsome",$string3);
+        echo ' <br>Hasil: "';
+        echo str_replace("sexy!","awsome",$string3);
+        echo '"';
     ?>
 </body>
 </html>
