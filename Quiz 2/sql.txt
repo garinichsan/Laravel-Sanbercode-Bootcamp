@@ -1,0 +1,29 @@
+/* ------------------------ Soal 1 ------------------------ */
+CREATE TABLE customers (
+	id 			INT AUTO_INCREMENT PRIMARY KEY,
+	name 		VARCHAR(255),
+	email 		VARCHAR(255),
+	password 	VARCHAR(255)
+);
+
+CREATE TABLE orders (
+	id 			INT AUTO_INCREMENT PRIMARY KEY,
+	amount 		INT,
+	customer_id	INT,
+	FOREIGN KEY (customer_id) REFERENCES customers(id)
+);
+
+
+/* ------------------------ Soal 2 ------------------------ */
+INSERT INTO customers (name,email,password) VALUES ('John Doe','john@doe.com','john123'), ('Jane Doe', 'jane@doe.com', 'jenita123');
+
+INSERT INTO users (amount,customer_id) 
+VALUES (500,1), (200,2), (750,2), (250,1), (400,2);
+
+
+/* ------------------------ Soal 3 ------------------------ */
+
+SELECT name AS customer_name, SUM(amount) AS total_amount
+FROM customers, orders
+WHERE customers.id = orders.customer_id
+GROUP BY customer_id;
